@@ -31,6 +31,7 @@ public class PacmanGame extends Game {
     public PacmanGame(int r, int c) {
         board = new BoardPiece[r][c];
         players = createPlayers();
+        display = new PacmanDisplay(this);
     }
 
     public void play() {

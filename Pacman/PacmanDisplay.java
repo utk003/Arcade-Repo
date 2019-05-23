@@ -100,6 +100,7 @@ public class PacmanDisplay extends JComponent implements KeyListener, MouseListe
             BoardPlayer player = players[i];
             int xCoord = (int) ((TILESIZE - 1) * player.getLocation().getCol());
             int yCoord = (int) ((TILESIZE - 1) * player.getLocation().getRow());
+            drawGamePlayer(g, player.getImage(), xCoord, yCoord);
         }
     }
 
