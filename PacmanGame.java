@@ -1,16 +1,23 @@
-import java.util.ArrayList;
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+import java.applet.*;
+import java.net.*;
 
 public class PacmanGame extends Game {
 
     public BoardPiece[][] board;
-    public BoardPlayer[] characters;
+    public BoardPlayer[] players;
 
     public BoardPiece getBoardPiece(int r, int c) {
         return board[r][c];
     }
 
     public BoardPlayer[] getPlayers() {
-        return characters;
+        return players;
     }
 
     public int getNumRows() {
@@ -23,7 +30,7 @@ public class PacmanGame extends Game {
 
     public PacmanGame(int r, int c) {
         board = new BoardPiece[r][c];
-        characters = createPlayers();
+        players = createPlayers();
     }
 
     public void play() {
@@ -74,5 +81,38 @@ public class PacmanGame extends Game {
             locs[3] = l;
 
         return locs;
+    }
+    
+    public void leftArrowPressed()
+    {
+        ((Pacman) players[0]).move(Location.Direction.LEFT);
+        try {
+            Thread.sleep(50);
+        }
+        catch (InterruptedException ex) {}
+    }
+    public void rightArrowPressed()
+    {
+        ((Pacman) players[0]).move(Location.Direction.RIGHT);
+        try {
+            Thread.sleep(50);
+        }
+        catch (InterruptedException ex) {}
+    }
+    public void upArrowPressed()
+    {
+        ((Pacman) players[0]).move(Location.Direction.UP);
+        try {
+            Thread.sleep(50);
+        }
+        catch (InterruptedException ex) {}
+    }
+    public void downArrowPressed()
+    {
+        ((Pacman) players[0]).move(Location.Direction.DOWN);
+        try {
+            Thread.sleep(50);
+        }
+        catch (InterruptedException ex) {}
     }
 }

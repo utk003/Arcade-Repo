@@ -1,3 +1,11 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+import java.applet.*;
+import java.net.*;
+
 public abstract class BoardPlayer {
     protected Location.Direction dir;
     protected Location loc;
@@ -9,7 +17,10 @@ public abstract class BoardPlayer {
         this.game = game;
     }
 
-    public abstract void move();
+    public Image getImage()
+    {
+        throw new RuntimeException("IMPLEMENT ME");
+    }
 
     public Location getLocation() {
         return loc;
