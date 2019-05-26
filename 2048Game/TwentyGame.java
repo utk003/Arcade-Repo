@@ -38,7 +38,17 @@ public class TwentyGame extends Game
 
     public void move(int direction)
     {
-        int add = board.shiftBoard(direction);
+        int add = 0;
+        try
+        {
+            add = board.shiftBoard(direction);
+        }
+        catch ( RuntimeException e )
+        {
+            if ( e.getMessage().equals("Bogus Move") )
+                return;
+            e.printStackTrace();
+        }
         display.update();
         score += add;
         if (score > highscore)

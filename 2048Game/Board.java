@@ -65,6 +65,10 @@ public class Board
 
     public int shiftBoard(int dir)
     {
+        Tile[][] boardCopy = new Tile[board.length][board[0].length];
+        for (int r = 0; r < board.length; r++)
+            for (int c = 0; c < board[0].length; c++)
+                boardCopy[r][c] = board[r][c];
         int total = 0;
         if (dir == Location.NORTH)
         {
@@ -114,7 +118,11 @@ public class Board
                 }
             }
         }
-        return total;
+        for (int r = 0; r < board.length; r++)
+            for (int c = 0; c < board[0].length; c++)
+                if ( boardCopy[r][c] != board[r][c] )
+                    return total;
+        throw new RuntimeException("Bogus Move");
     }
 
     public int getSize()

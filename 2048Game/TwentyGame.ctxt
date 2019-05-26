@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TwentyGame()
+comment1.params=direction
+comment1.target=void\ move(int)
+comment2.params=
+comment2.target=int\ getHighscore()
+comment3.params=
+comment3.target=void\ play()
+comment4.params=
+comment4.target=void\ addTile()
+comment5.params=
+comment5.target=Board\ getBoard()
+numComments=6
