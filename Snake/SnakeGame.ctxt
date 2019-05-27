@@ -1,14 +1,16 @@
 #BlueJ class context
-comment0.params=
-comment0.target=SnakeGame()
+comment0.target=SnakeGame
+comment0.text=\n\ Write\ a\ description\ of\ class\ RealGame\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
-comment1.target=Location\ genNewPellet()
+comment1.target=SnakeGame()
 comment2.params=
-comment2.target=int\ getHighscore()
+comment2.target=Location\ genNewPellet()
 comment3.params=
-comment3.target=void\ play()
+comment3.target=int\ getHighscore()
 comment4.params=
-comment4.target=void\ update()
+comment4.target=void\ play()
 comment5.params=
-comment5.target=boolean\ hasEnded()
-numComments=6
+comment5.target=void\ update()
+comment6.params=
+comment6.target=boolean\ hasEnded()
+numComments=7

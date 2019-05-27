@@ -1,10 +1,12 @@
 #BlueJ class context
-comment0.params=myRow\ myCol
-comment0.target=Location(int,\ int)
-comment1.params=
-comment1.target=int\ getRow()
+comment0.target=Location
+comment0.text=\n\ Write\ a\ description\ of\ class\ Location\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=myRow\ myCol
+comment1.target=Location(int,\ int)
 comment2.params=
-comment2.target=int\ getCol()
-comment3.params=l
-comment3.target=boolean\ equals(Location)
-numComments=4
+comment2.target=int\ getRow()
+comment3.params=
+comment3.target=int\ getCol()
+comment4.params=l
+comment4.target=boolean\ equals(Location)
+numComments=5
