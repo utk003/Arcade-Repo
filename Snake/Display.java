@@ -18,7 +18,7 @@ public class Display extends JComponent implements KeyListener, MouseListener
     private static final Color BORDER = Color.DARK_GRAY;
     
     private static final int MARGIN = 1;
-    private static final int BLOCK_SIZE = 10;
+    private static final int BLOCK_SIZE = 15;
     private static final int SCOREBOARD = 90;
     
     private int dim;
@@ -122,9 +122,9 @@ public class Display extends JComponent implements KeyListener, MouseListener
         // Game Over
         if ( game.hasEnded() )
         {
-            g.setFont(new Font("Avenir Next", Font.BOLD, 75));
+            g.setFont(new Font("Avenir Next", Font.BOLD, 50));
             g.setColor(Color.WHITE);
-            g.drawString("Game Over!", 60, 375);
+            g.drawString("Game Over!", 75, 325);
         }
     }
     

@@ -18,7 +18,7 @@ public class SnakeGame extends Game
     public Snake snake;
     public Location pellet;
     
-    public static final int BOARD_DIM = 51;
+    public static final int BOARD_DIM = 30;
     
     public int dir;
     
