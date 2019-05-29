@@ -42,6 +42,5 @@ public class Breakout
 
         }
     }
-    private void checkForCollisions()
 
 }
