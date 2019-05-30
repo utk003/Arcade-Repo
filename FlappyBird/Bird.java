@@ -22,7 +22,7 @@ public class Bird
     
     private FloppyGame game;
     
-    private static final int GRAVITY = 250;
+    private static final int GRAVITY = 450;
     private final double TIME_INTERVAL;
     private static final int JUMP_SPEED = -150;
     
