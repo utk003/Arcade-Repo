@@ -11,27 +11,17 @@ import java.net.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class ArcadeDisplay extends JComponent implements KeyListener, MouseListener
+public class ArcadeDisplay extends JComponent implements KeyListener, MouseListener, Runnable
 {
-    private static final Color BACKGROUND = Color.BLACK;
-    private static final Color BLOCK_COLOR = Color.WHITE;
-    private static final Color BORDER = Color.DARK_GRAY;
-    
-    private static final int MARGIN = 1;
-    private static final int BLOCK_SIZE = 15;
-    private static final int SCOREBOARD = 90;
-    
-    private int dim;
-
     private Game currentGame;
-    
+    private Arcade arcade;
     private JFrame frame;
 
     // Constructs a new display for displaying the given board
     public ArcadeDisplay(Arcade myArcade)
     {
-        
-        
+        arcade = myArcade;
+
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
         SwingUtilities.invokeLater(new Runnable()
@@ -41,7 +31,7 @@ public class ArcadeDisplay extends JComponent implements KeyListener, MouseListe
                     createAndShowGUI();
                 }
             });
-          
+
         //Wait until display has been drawn
         try
         {
@@ -64,14 +54,14 @@ public class ArcadeDisplay extends JComponent implements KeyListener, MouseListe
     {
         //Create and set up the window.
         frame = new JFrame();
-        
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.addKeyListener(this);
         frame.addMouseListener(this);
 
         //Display the window.
-        this.setPreferredSize(new Dimension(dim, dim + SCOREBOARD));
+        this.setPreferredSize(new Dimension(533, 427));
         this.addMouseListener(this);
 
         frame.pack();
@@ -80,24 +70,24 @@ public class ArcadeDisplay extends JComponent implements KeyListener, MouseListe
 
     public void paintComponent(Graphics g)
     {
-        
+        g.drawImage(arcade.getImage(), 0, 0, getWidth(), getHeight(), null);
     }
-    
+
     private void drawBlock(Graphics g, int r, int c)
     {
-        
+
     }
-    
+
     public void setTitle(String title)
     {
         frame.setTitle(title);
     }
-    
+
     public void update()
     {
         repaint();
     }
-    
+
     public void keyTyped(KeyEvent e)
     {
     }
@@ -108,36 +98,85 @@ public class ArcadeDisplay extends JComponent implements KeyListener, MouseListe
 
     public void close()
     {
-        frame.setVisible(false);
+        frame.dispose();
     }
-    
+
     public void keyPressed(KeyEvent e)
     {
         if (currentGame == null)
             return;
-        
         int code = e.getKeyCode();
     }
 
     public void mouseExited(MouseEvent e)
     {
-        
+
     }
-    
+
     public void mouseEntered(MouseEvent e)
     {
     }
-    
+
     public void mouseReleased(MouseEvent e)
     {
     }
-    
+
     public void mousePressed(MouseEvent e)
     {
     }
-    
+
     public void mouseClicked(MouseEvent e)
     {
-        //ADD MOUSE CLICKED CODE FOR CLICKED GAMES
+        Graphics g = getGraphics();
+        g.setColor(Color.RED);
+        int x = e.getX();
+        int y = e.getY();
+        if (x > 100 && x < 250 && y > 110 && y < 170)
+        {
+            arcade.make2048();
+        }
+        // else if (x > 100 && x < 250 && y > 180 && y < 225)
+        // {
+            // arcade.makePacman();
+            // //PacMan
+        // }
+        // else if (x > 100 && x < 250 && y > 235 && y < 285)
+        // {
+            // arcade.makeBreakout();
+            // //breakout
+        // }
+        // else if (x > 100 && x < 250 && y > 290 && y < 360)
+        // {
+            // arcade.makeTetris();
+            // //tetris
+        // }
+        // else if (x > 275 && x < 425 && y > 110 && y < 170)
+        // {
+            // arcade.makeSnake();
+            // //snake
+        // }
+        // else if (x > 275 && x < 425 && y > 180 && y < 225)
+        // {
+            // arcade.makeFlappyBird();
+            // //flappy
+        // }
+        // else if (x > 275 && x < 425 && y > 235 && y < 285)
+        // {
+            // arcade.makePong();
+            // //pong
+        // }
+        else if (x > 275 && x < 425 && y > 290 && y < 360)
+        {
+            arcade.makeMineSweeper();
+            //minesweeper
+        }
+        
+    }
+    
+    public void run()
+    {
+        try{Thread.sleep(250);}
+        catch(InterruptedException ex){}
+        repaint();
     }
 }

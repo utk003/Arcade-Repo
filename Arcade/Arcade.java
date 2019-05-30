@@ -1,64 +1,90 @@
 import java.util.*;
-import java.lang.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import javax.swing.*;
+import java.applet.*;
+import java.net.*;
 /**
  * Write a description of class Arcade here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Arcade
+public class Arcade 
 {
-   ArrayList<String> gameNames;
-   public Arcade()
-   {
-       gameNames = new ArrayList<String>();
-       gameNames.add("Pacman");
-       gameNames.add("MineSweeper");
-       gameNames.add("Breakout");
-       gameNames.add("Pong");
-       gameNames.add("Snake");
-       gameNames.add("2048");
-       gameNames.add("FlappyBird");
-       gameNames.add("Tetris");
-   }
-   
-   public Game makePacman()
-   {
-       return new Pacman();
-   }
-   
-   public Game makeMineSweeper()
-   {
-       return new MineGame();
-   }
-   
-   public Game makeAtari()
-   {
-       return new Atari();
-   }
-   
-   public Game makePong()
-   {
-       return new Pong();
-   }
-   
-   public Game makeSnake()
-   {
-       return new Snake();
-   }
-   
-   public Game make2048()
-   {
-       return new TwentyGame();
-   }
-   
-   public Game makeFlappyBird()
-   {
-       return new FloppyGame();
-   }
-   
-   public Game makeTetris()
-   {
-       return new Tetris();
-   }
+    ArrayList<Image> dispImages;
+    ArcadeDisplay display;
+    Game currentGame;
+
+    public Arcade()
+    {
+        dispImages = new ArrayList<Image>();
+        dispImages.add(new ImageIcon("Assets/Arcade/ArcadeDisplay-1.png").getImage());
+        dispImages.add(new ImageIcon("Assets/Arcade/ArcadeDisplay-2.png").getImage());
+        dispImages.add(new ImageIcon("Assets/Arcade/ArcadeDisplay-3.png").getImage());
+        display = new ArcadeDisplay(this);
+        Thread object = new Thread(new ArcadeThread(this)); 
+        object.start(); 
+    }
+
+    // public Game makePacman()
+    // {
+        // return new Pacman();
+    // }
+
+    public Game makeMineSweeper()
+    {
+        return new MineGame();
+    }
+
+    // public Game makeBreakout()
+    // {
+        // return new Breakout();
+    // }
+
+    // public Game makePong()
+    // {
+        // return new Pong();
+    // }
+
+    // public void makeSnake()
+    // {
+        // System.out.println("Snake");
+        // currentGame = new SnakeGame();
+    // }
+
+    public void make2048()
+    {
+        System.out.println("2048");
+        currentGame = new TwentyGame();
+    }
+
+    public void makeFlappyBird()
+    {
+        System.out.println("FlappyBird");
+        currentGame = new FloppyGame();
+    }
+
+    public void makeTetris()
+    {
+        System.out.println("Tetris");
+        currentGame = new TetrisGame();
+    }
+    
+    public void update()
+    {
+        display.update();
+    }
+    
+    public Game getCurrentGame()
+    {
+        return currentGame;
+    }
+    public Image getImage()
+    {
+        Image temp = dispImages.remove(0);
+        dispImages.add(temp);
+        return temp;
+    }
 }
