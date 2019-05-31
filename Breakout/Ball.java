@@ -19,12 +19,10 @@ public class Ball extends Shape
      */
     public Ball(double xCoord, double yCoord)
     {
-        // initialise instance variables
         super(true, Color.WHITE, xCoord, yCoord, 2, 2);
         velX=.309;
         velY=-.951;
     }
-
     public void move()
     {
         setX(getX()+velX);
