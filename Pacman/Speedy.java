@@ -1,20 +1,26 @@
+ 
+
 import java.util.ArrayList;
 
 /**
  * Speedy is the pink ghost
  * Speedy moves randomly and has the fastest move speed
  */
-public class Speedy extends Ghost {
-
-    public Speedy(PacmanGame game) {
+public class Speedy extends Ghost
+{
+    public Speedy(PacmanGame game)
+    {
         super(game);
-        dir = Location.Direction.DOWN;
+        loadSprites("pink");
+        defaultSpeeds = new double[]{0.1, 0.05, 0.15};
+        updateState(State.ALIVE);
     }
 
-    public void move() {
+    public void move()
+    {
         Location[] locs = game.getAdjacent(loc);
         ArrayList<Integer> a1 = new ArrayList<Integer>(4);
-        for ( int i = 1; i <= 4; i++ )
+        for ( int i = 0; i < 4; i++ )
             a1.add(i);
         ArrayList<Integer> a2 = new ArrayList<Integer>(4);
         for ( int i = 4; i > 0; i-- )

@@ -1,3 +1,5 @@
+ 
+
 public class Location implements Comparable<Location>
 {
     private double row; // row location in grid

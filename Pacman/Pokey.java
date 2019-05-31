@@ -1,20 +1,26 @@
+ 
+
 import java.util.ArrayList;
 
 /**
  * Pokey is the orange ghost
  * Pokey moves randomly and has the slowest move speed
  */
-public class Pokey extends Ghost {
-
-    public Pokey(PacmanGame game) {
+public class Pokey extends Ghost
+{
+    public Pokey(PacmanGame game)
+    {
         super(game);
-        dir = Location.Direction.RIGHT;
+        loadSprites("orange");
+        defaultSpeeds = new double[]{0.05, 0.05, 0.15};
+        updateState(State.ALIVE);
     }
 
-    public void move() {
+    public void move()
+    {
         Location[] locs = game.getAdjacent(loc);
         ArrayList<Integer> a1 = new ArrayList<Integer>(4);
-        for ( int i = 1; i <= 4; i++ )
+        for ( int i = 0; i < 4; i++ )
                 a1.add(i);
         ArrayList<Integer> a2 = new ArrayList<Integer>(4);
         for ( int i = 4; i > 0; i-- )

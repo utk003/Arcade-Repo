@@ -1,6 +1,13 @@
-public final class Pellet extends BoardPiece {
+import java.awt.*;
+import javax.swing.*;
 
-    public Pellet() {
-        dir = Direction.PELLET;
+public final class Pellet extends BoardPiece
+{
+    public boolean big;
+    
+    public Pellet( String s )
+    {
+        big = s.equalsIgnoreCase("big");
+        sprite = new ImageIcon("Assets/p" + s + ".png").getImage();
     }
 }

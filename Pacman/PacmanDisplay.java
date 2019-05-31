@@ -1,10 +1,8 @@
+ 
+
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 import javax.swing.*;
-import java.applet.*;
-import java.net.*;
 
 /**
  * Abstract class Display - write a description of the class here
@@ -98,8 +96,8 @@ public class PacmanDisplay extends JComponent implements KeyListener, MouseListe
         for (int i = 0; i < players.length; i++)
         {
             BoardPlayer player = players[i];
-            int xCoord = (int) ((TILESIZE - 1) * player.getLocation().getCol());
-            int yCoord = (int) ((TILESIZE - 1) * player.getLocation().getRow());
+            int xCoord = (int) (TILESIZE * player.getLocation().getCol() - TILESIZE * 0.75);
+            int yCoord = (int) (TILESIZE * player.getLocation().getRow() - TILESIZE * 0.75);
             drawGamePlayer(g, player.getImage(), xCoord, yCoord);
         }
     }
@@ -108,10 +106,10 @@ public class PacmanDisplay extends JComponent implements KeyListener, MouseListe
     {
         g.drawImage(image, x, y, TILESIZE, TILESIZE, null);
     }
-    
+     
     private void drawGamePlayer(Graphics g, Image image, int x, int y)
     {
-        g.drawImage(image, x, y, TILESIZE*2, TILESIZE*2, null);
+        g.drawImage(image, x, y, TILESIZE*3/2, TILESIZE*3/2, null);
     }
     
     public void keyTyped(KeyEvent e)
@@ -124,23 +122,16 @@ public class PacmanDisplay extends JComponent implements KeyListener, MouseListe
 
     public void keyPressed(KeyEvent e)
     {
+        System.out.print("hi ");
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_LEFT)
-        {
-            game.leftArrowPressed();
-        }
+            game.dir = Location.Direction.LEFT;
         else if (key == KeyEvent.VK_RIGHT)
-        {
-            game.rightArrowPressed();
-        }
+            game.dir = Location.Direction.RIGHT;
         else if (key == KeyEvent.VK_UP)
-        {
-            game.upArrowPressed();
-        }
+            game.dir = Location.Direction.UP;
         else if (key == KeyEvent.VK_DOWN)
-        {
-            game.downArrowPressed();
-        }
+            game.dir = Location.Direction.DOWN;
     }
 
     public void mouseExited(MouseEvent e)

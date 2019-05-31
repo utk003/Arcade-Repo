@@ -1,6 +1,10 @@
-public final class Wall extends BoardPiece {
+import java.awt.*;
+import javax.swing.*;
 
-    public Wall(BoardPiece.Direction dir) {
-        this.dir = dir;
+public final class Wall extends BoardPiece
+{
+    public Wall( String s )
+    {
+        sprite = new ImageIcon("Assets/Walls/" + s + ".png").getImage();
     }
 }

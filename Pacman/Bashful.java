@@ -1,23 +1,31 @@
+ 
+
 /**
  * Bashful is the cyan ghost
  * Bashful avoids Pacman at first but retaliates if attacked
  */
-public class Bashful extends Ghost {
+public class Bashful extends Ghost
+{
     private boolean attacked = false;
 
-    public Bashful(PacmanGame game) {
+    public Bashful(PacmanGame game)
+    {
         super(game);
-        dir = Location.Direction.LEFT;
+        loadSprites("cyan");
+        defaultSpeeds = new double[]{0.075, 0.05, 0.15};
+        updateState(State.ALIVE);
     }
 
-    public void move() {
+    public void move()
+    {
         if ( ! attacked )
             flee();
         else
             attack();
     }
-
-    private void flee() {
+    /*
+    private void flee()
+    {
         Location[] locs = game.getAdjacent(loc);
         double maxDist = -1;
         int maxDistIndex = -1;
@@ -34,7 +42,8 @@ public class Bashful extends Ghost {
         dir = dirs[maxDistIndex];
     }
 
-    private void attack() {
+    private void attack()
+    {
         Location[] locs = game.getAdjacent(loc);
         double minDist = 100;
         int minDistIndex = -1;
@@ -50,4 +59,5 @@ public class Bashful extends Ghost {
         loc = locs[minDistIndex];
         dir = dirs[minDistIndex];
     }
+    */
 }

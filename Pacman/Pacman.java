@@ -1,54 +1,87 @@
-public class Pacman extends BoardPlayer {
-    
-    private static final double MOVE_DISTANCE = 0.1;
-    
-    public Pacman(PacmanGame game) {
-        super(game);
-        loc = new Location(-1, -1);
-        dir = Location.Direction.NONE;
-    }
+ import java.awt.*;
+ import javax.swing.*;
 
-    public Location move(Location.Direction direction) 
+public class Pacman extends BoardPlayer
+{
+    private State state;
+    private int deadCounter;
+    
+    public enum State
     {
-        BoardPiece[][] board = game.board;
-        int intRow;
-        int intCol;
-        if (direction == Location.Direction.LEFT)
-        {
-            intRow = (int) (loc.getRow());
-            intCol = (int) (loc.getCol() + 1 + MOVE_DISTANCE);
-            if (intCol < 30 && board[intRow][intCol] == null)
+        ALIVE, DEAD
+    }
+    
+    // Sprites Array
+    // U1, U2, R1, R2, D1, D2, L1, L2, pac, dead 0..10
+    
+    public Pacman(PacmanGame game)
+    {
+        super(game);
+        loadSprites();
+        speed = 0.1;
+    }
+    
+    protected void loadSprites()
+    {
+        sprites = new Image[20];
+        String[] dirs = {"U","R","D","L"};
+        String[] scareCol = {"B","W"};
+        int ind = 0;
+        for ( String dir: dirs )
+            for ( int i = 1; i <= 2; i++ )
             {
-                loc = new Location(intRow, loc.getCol() + MOVE_DISTANCE);
+                sprites[ind] = new ImageIcon("Assets/pac" + dir + i + ".png").getImage();
+                ind++;
             }
-        }
-        else if (direction == Location.Direction.RIGHT)
+        sprites[ind] = new ImageIcon("Assets/pac.png").getImage();
+        ind++;
+        for ( int i = 0; i <= 10; i++ )
         {
-            intRow = (int) (loc.getRow());
-            intCol = (int) Math.floor(loc.getCol() - 1 - MOVE_DISTANCE);
-            if (intCol >= 0 && board[intRow][intCol] == null)
-            {
-                loc = new Location(intRow, loc.getCol() - MOVE_DISTANCE);
-            }
+            sprites[ind] = new ImageIcon("Assets/death" + i + ".png").getImage();
+            ind++;
         }
-        else if (direction == Location.Direction.UP)
+    }
+    
+    public void updateDirection()
+    {
+        dir = game.dir;
+    }
+    
+    public void updateState(State s)
+    {
+        if (state == s)
+            return;
+        if (s == State.ALIVE)
+            deadCounter = 0;
+        state = s;
+    }
+    
+    public Image getImage()
+    {
+        updateSpriteCounter();
+        if ( state == State.ALIVE )
         {
-            intRow = (int) Math.floor(loc.getRow() - 1 - MOVE_DISTANCE);
-            intCol = (int) (loc.getCol());
-            if (intRow >= 0 && board[intRow][intCol] == null)
-            {
-                loc = new Location(loc.getRow() - MOVE_DISTANCE, intCol);
-            }
+            if ( dir == Location.Direction.NONE )
+                return sprites[8];
+            int spriteShift = spriteCounter / 2;
+            for ( int i = 0; i < 4; i++ )
+                if ( dir == dirs[i] )
+                    return sprites[2*i + spriteShift];
         }
-        else if (direction == Location.Direction.DOWN)
+        else if ( state == State.DEAD )
         {
-            intRow = (int) Math.floor(loc.getRow() + 1 + MOVE_DISTANCE);
-            intCol = (int) (loc.getCol());
-            if (intRow < 30 && board[intRow][intCol] == null)
-            {
-                loc = new Location(loc.getRow() + MOVE_DISTANCE, intCol);
-            }
+            Image i = null;
+            if ( deadCounter <= 11 )
+                i = sprites[8 + deadCounter];
+            else
+                respawn();
         }
-        return loc;
+        return null;
+    }
+    
+    public void respawn()
+    {
+        game.setSpawn();
+        game.lives--;
     }
 }
