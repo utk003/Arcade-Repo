@@ -22,32 +22,28 @@ public class Obstacle extends Shape
     {
         super(false, col, x1, y1, w, h);
     }
-
     private boolean containsPoint(double x, double y)
     {
         return (x>getX()&&x<getX()+getWidth()&&y>getY()&&y<getY()+getHeight());
     }
-
-    public boolean overlapsWith(Ball ball)
-    {
-        return containsPoint(ball.getX(),ball.getY()+ball.getHeight()/2) ||
+	public boolean overlapsWith(Ball ball)
+	{
+	    return containsPoint(ball.getX(),ball.getY()+ball.getHeight()/2) ||
 	    containsPoint(ball.getX()+ball.getWidth(),ball.getY()+ball.getHeight()/2) ||
 	    containsPoint(ball.getX()+ball.getWidth()/2,ball.getY()+ball.getHeight()) ||
 	    containsPoint(ball.getX()+ball.getWidth()/2,ball.getY());
-    }
-
-    public boolean handleCollision(Ball ball)
-    {
-        if(containsPoint(ball.getX(),ball.getY()+ball.getHeight()/2)||
-        containsPoint(ball.getX()+ball.getWidth(),ball.getY()+ball.getHeight()/2))
-        {
-            ball.setVelocityX(-ball.getVelocityX());
-        }
-        if(containsPoint(ball.getX()+ball.getWidth()/2,ball.getY()+ball.getHeight()) ||
-        containsPoint(ball.getX()+ball.getWidth()/2,ball.getY()))
-        {
-            ball.setVelocityY(-ball.getVelocityY());
-        }
-        return false;
-    }
+	}
+	public boolean handleCollision(Ball ball)
+	{
+	    if(containsPoint(ball.getX(),ball.getY()+ball.getHeight()/2)||
+	    containsPoint(ball.getX()+ball.getWidth(),ball.getY()+ball.getHeight()/2))
+	    {
+	        ball.setVelocityX((-1)*ball.getVelocityX());
+	    }
+	    if(containsPoint(ball.getX()+ball.getWidth()/2,ball.getY()+ball.getHeight()) ||
+	    containsPoint(ball.getX()+ball.getWidth()/2,ball.getY()))
+	    {
+	        ball.setVelocityY((-1)*ball.getVelocityY());
+	    }
+	}
 }
