@@ -28,13 +28,12 @@ public class Tile
         value = 2;
         if (rand == 0)
             value = 4;
-        image = new ImageIcon("Assets/Tile-" + value + ".png").getImage();
+        image=new ImageIcon("Assets/Tile-"+value+".png").getImage();
     }
-
     public void doubleValue()
     {
         value *= 2;
-        image = new ImageIcon("Assets/Tile-" + value + ".png").getImage();
+        image=new ImageIcon("Assets/Tile-"+value+".png").getImage();
     }
 
     public int getValue()
