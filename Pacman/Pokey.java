@@ -12,24 +12,12 @@ public class Pokey extends Ghost
     {
         super(game);
         loadSprites("orange");
-        defaultSpeeds = new double[]{0.05, 0.05, 0.15};
+        defaultSpeeds = new double[]{0.05, 0.045, 0.3};
         updateState(State.ALIVE);
     }
 
-    public void move()
+    protected void attack()
     {
-        Location[] locs = game.getAdjacent(loc);
-        ArrayList<Integer> a1 = new ArrayList<Integer>(4);
-        for ( int i = 0; i < 4; i++ )
-                a1.add(i);
-        ArrayList<Integer> a2 = new ArrayList<Integer>(4);
-        for ( int i = 4; i > 0; i-- )
-            a2.add( a1.remove((int) (Math.random() * i)) );
-
-        while ( locs[a2.get(0)] == null )
-            a2.remove(0);
-
-        dir = dirs[a2.get(0)];
-        loc = locs[a2.get(0)];
+        random();
     }
 }

@@ -123,11 +123,16 @@ public class PacmanGame extends Game
         return lives <= 0;
     }
     
+    public boolean pacIsDead()
+    {
+        return ((Pacman) players[0]).state == Pacman.State.DEAD;
+    }
+    
     public void play()
     {
         // Start Player Threads
         MyThread[] threads = new MyThread[players.length];
-        for ( int i = 0; i < 1/*players.length*/; i++ )
+        for ( int i = 0; i < players.length; i++ )
         {
             threads[i] = new MyThread( players[i], this );
             threads[i].start();
@@ -136,6 +141,7 @@ public class PacmanGame extends Game
         while ( ! gameOver() )
         {
             display.repaint();
+            collisionDetection();
         }
     }
 
@@ -148,6 +154,31 @@ public class PacmanGame extends Game
         board[3] = new Pokey(this);   // Orange
         board[4] = new Speedy(this);  // Pink
         return board;
+    }
+    
+    public void collisionDetection()
+    {
+        int pacIntR = (int) players[0].loc.getRow(), pacIntC = (int) players[0].loc.getCol();
+        if ( board[pacIntR][pacIntC] != null && board[pacIntR][pacIntC] instanceof Pellet )
+        {
+            Pellet p = (Pellet) board[pacIntR][pacIntC];
+            if ( p.big )
+                for ( int i = 1; i < players.length; i++ )
+                    ((Ghost) players[i]).updateState(Ghost.State.SCARED);
+            board[pacIntR][pacIntC] = null;
+        }
+        Location pac = players[0].loc;
+        for ( int i = 1; i < players.length; i++ )
+        {
+            Ghost g = (Ghost) players[i];
+            if ( pac.equals(g.loc) )
+            {
+                if ( g.state == Ghost.State.ALIVE )
+                    ((Pacman) players[0]).updateState( Pacman.State.DEAD );
+                else if ( g.state == Ghost.State.SCARED )
+                    g.updateState( Ghost.State.DEAD );
+            }
+        }
     }
 
     public boolean isValid(Location loc)

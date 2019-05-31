@@ -37,14 +37,11 @@ public abstract class BoardPlayer {
         return dir;
     }
     
-    public void updateDirection()
-    {
-        throw new RuntimeException("Implement Me ( method updateDirection() )");
-    }
+    public abstract void updateDirection();
     
     protected void updateSpriteCounter()
     {
-        if ( spriteToggle < 50 )
+        if ( spriteToggle == 100 )
         {
             spriteCounter++;
             spriteToggle = -1;
@@ -55,6 +52,13 @@ public abstract class BoardPlayer {
     }
     
     public void move()
+    {
+        Location newLoc = getMoveDest();
+        if ( newLoc != null )
+            loc = newLoc;
+    }
+    
+    protected Location getMoveDest()
     {
         Location newLoc = loc;
         if ( dir == Location.Direction.UP || dir == Location.Direction.DOWN )
@@ -78,17 +82,18 @@ public abstract class BoardPlayer {
             newLoc = new Location( 0.5 + (int) r, c );
         }
         if ( game.isValid(newLoc) )
-            loc = newLoc;
+            return newLoc;
         else
         {
             double r = newLoc.getRow(), c = newLoc.getCol();
             if ( r >= 14 && r < 16 )
             {
                 if ( c < 0 )
-                    loc = new Location(r, c + 30);
+                    return new Location(r, c + 30);
                 else if ( c >= 30 )
-                    loc = new Location(r, c - 30);
+                    return new Location(r, c - 30);
             }
         }
+        return null;
     }
 }

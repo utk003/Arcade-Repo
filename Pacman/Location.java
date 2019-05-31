@@ -5,7 +5,8 @@ public class Location implements Comparable<Location>
     private double row; // row location in grid
     private double col; // column location in grid
 
-    public enum Direction {
+    public enum Direction
+    {
         LEFT, RIGHT, UP, DOWN, NONE
     }
 
@@ -15,17 +16,37 @@ public class Location implements Comparable<Location>
         col = c;
     }
 
-    public double getRow() {
+    public double getRow()
+    {
         return row;
     }
 
-    public double getCol() {
+    public double getCol()
+    {
         return col;
     }
 
-    public double getDistanceTo(Location loc) {
+    public double getDistanceTo(Location loc)
+    {
         double xDist = row - loc.row, yDist = col - loc.col;
         return Math.sqrt(xDist * xDist + yDist * yDist);
+    }
+    
+    public Direction getDirectionTo(Location loc)
+    {
+        double diffR = loc.row - row, diffC = loc.col - col;
+        if ( Math.abs(diffR) > Math.abs(diffC) )
+        {
+            if ( diffR > 0 )
+                return Direction.DOWN;
+            return Direction.UP;
+        }
+        else
+        {
+            if ( diffC > 0 )
+                return Direction.RIGHT;
+            return Direction.LEFT;
+        }
     }
 
     public boolean equals(Object other)

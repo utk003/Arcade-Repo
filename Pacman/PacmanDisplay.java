@@ -93,13 +93,17 @@ public class PacmanDisplay extends JComponent implements KeyListener, MouseListe
             }
         }
         
-        for (int i = 0; i < players.length; i++)
-        {
-            BoardPlayer player = players[i];
-            int xCoord = (int) (TILESIZE * player.getLocation().getCol() - TILESIZE * 0.75);
-            int yCoord = (int) (TILESIZE * player.getLocation().getRow() - TILESIZE * 0.75);
-            drawGamePlayer(g, player.getImage(), xCoord, yCoord);
-        }
+        for (int i = 1; i < players.length; i++)
+            displayPlayer(g, i);
+        displayPlayer(g, 0);
+    }
+    
+    private void displayPlayer(Graphics g, int i)
+    {
+        BoardPlayer player = players[i];
+        int xCoord = (int) (TILESIZE * player.getLocation().getCol() - TILESIZE * 0.75);
+        int yCoord = (int) (TILESIZE * player.getLocation().getRow() - TILESIZE * 0.75);
+        drawGamePlayer(g, player.getImage(), xCoord, yCoord);
     }
 
     private void drawGamePiece(Graphics g, Image image, int x, int y)
@@ -122,7 +126,6 @@ public class PacmanDisplay extends JComponent implements KeyListener, MouseListe
 
     public void keyPressed(KeyEvent e)
     {
-        System.out.print("hi ");
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_LEFT)
             game.dir = Location.Direction.LEFT;

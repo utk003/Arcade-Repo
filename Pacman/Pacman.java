@@ -3,8 +3,9 @@
 
 public class Pacman extends BoardPlayer
 {
-    private State state;
+    public State state;
     private int deadCounter;
+    private int spriteToggle = -1;
     
     public enum State
     {
@@ -70,9 +71,14 @@ public class Pacman extends BoardPlayer
         }
         else if ( state == State.DEAD )
         {
-            Image i = null;
+            spriteToggle++;
+            if ( spriteToggle == 100 )
+            {
+                deadCounter++;
+                spriteToggle = -1;
+            }
             if ( deadCounter <= 11 )
-                i = sprites[8 + deadCounter];
+                return sprites[8 + deadCounter];
             else
                 respawn();
         }

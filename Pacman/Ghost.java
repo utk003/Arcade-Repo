@@ -1,5 +1,5 @@
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import java.util.*;
 
 public abstract class Ghost extends BoardPlayer
@@ -11,7 +11,7 @@ public abstract class Ghost extends BoardPlayer
     
     protected int scaredDuration;
     
-    protected java.util.List<Location> placesGone;
+    protected LinkedList<Location> placesGone;
 
     // Sprites Array
     // U1, U2, R1, R2, D1, D2, L1, L2, ScareB1, ScareB2, ScareW1, ScareW2, EyesU, EyesR, EyesD, EyesL
@@ -27,6 +27,7 @@ public abstract class Ghost extends BoardPlayer
         super(game);
         scaredDuration = 0;
         loc = new Location(-1, -1);
+        placesGone = new LinkedList<Location>();
     }
 
     protected void loadSprites( String color )
@@ -60,8 +61,6 @@ public abstract class Ghost extends BoardPlayer
             return;
         if (s == State.ALIVE)
         {
-            if ( state == State.DEAD )
-                placesGone = new LinkedList<Location>();
             speed = defaultSpeeds[0];
         }
         else if (s == State.SCARED)
@@ -76,21 +75,21 @@ public abstract class Ghost extends BoardPlayer
 
     public Image getImage()
     {
+        if ( game.pacIsDead() )
+            return null;
         updateSpriteCounter();
         int diff = spriteCounter / 2;
         if ( state == State.SCARED )
         {
             scaredDuration++;
-            if ( scaredDuration > game.fps * 5 ) // Scare Mode Over
+            if ( scaredDuration > 10000 ) // Scare Mode Over
             {
                 updateState(State.ALIVE);
-                for ( int i = 0; i < 4; i++ )
-                    if ( dir == dirs[i] )
-                        return sprites[2 * i + diff];
+                return getImage();
             }
-            else if ( scaredDuration > game.fps * 4 ) // Scare Mode About To End
+            else if ( scaredDuration > 8000 ) // Scare Mode About To End
             {
-                if ( scaredDuration % 8 < 4 )
+                if ( scaredDuration % 250 < 125 )
                     return sprites[10 + diff];
                 else
                     return sprites[8 + diff];
@@ -117,21 +116,84 @@ public abstract class Ghost extends BoardPlayer
     public void move()
     {
         super.move();
-        placesGone.add( loc );
+        if ( state != State.DEAD )
+            placesGone.add( loc );
+    }
+    
+    @Override
+    public void updateDirection()
+    {
+        if ( state == State.ALIVE )
+            attack();
+        else if ( state == State.SCARED )
+            flee();
+        else if ( state == State.DEAD )
+            heal();
+    }
+    
+    protected void chase()
+    {
+        Location[] locs = game.getAdjacent(loc);
+        Location pac = game.players[0].loc;
+        int ind = 0;
+        double minDist = 100;
+        for ( int i = 0; i < locs.length; i++ )
+        {
+            if ( locs[i] != null )
+            {
+                double dist = locs[i].getDistanceTo(pac);
+                if ( dist < minDist )
+                {
+                    ind = i;
+                    minDist = dist;
+                }
+            }
+        }
+        dir = dirs[ind];
+    }
+    
+    protected void run()
+    {
+        Location[] locs = game.getAdjacent(loc);
+        Location pac = game.players[0].loc;
+        int ind = 0;
+        double maxDist = 0;
+        for ( int i = 0; i < locs.length; i++ )
+        {
+            if ( locs[i] != null )
+            {
+                double dist = locs[i].getDistanceTo(pac);
+                if ( dist > maxDist )
+                {
+                    ind = i;
+                    maxDist = dist;
+                }
+            }
+        }
+        dir = dirs[ind];
+    }
+    
+    protected void random()
+    {
+        while ( getMoveDest() == null )
+            dir = dirs[(int) ( Math.random() * dirs.length )];
     }
     
     protected void flee()
     {
-        
+        run();
     }
     
-    protected void attack()
-    {
-        
-    }
+    protected abstract void attack();
     
     protected void heal()
     {
-        
+        if ( placesGone.size() == 0 )
+        {
+            updateState( State.ALIVE );
+            updateDirection();
+        }
+        else
+            dir = loc.getDirectionTo( placesGone.removeLast() );
     }
 }
