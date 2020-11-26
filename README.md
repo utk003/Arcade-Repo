@@ -1,5 +1,6 @@
 # Arcade Repo
 This is the EOY project for the APCSDS class we took in 10th grade.
+
 Contributors: [Aditya S.](https://github.com/baboondude), [Eric Z.](https://github.com/stephsplash30), [Ray W.](https://github.com/rbuckets), [Utkarsh P.](https://github.com/utk003)
 
 ## What is This?
