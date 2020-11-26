@@ -3,7 +3,7 @@ This is the EOY project for the APCSDS class we took in 10th grade.
 
 Contributors: [Aditya S.](https://github.com/baboondude), [Eric Z.](https://github.com/stephsplash30), [Ray W.](https://github.com/rbuckets), [Utkarsh P.](https://github.com/utk003)
 
-## What is This?
+## What Is This?
 This is a collection of 7 classic arcade games that we implemented in Java: [2048](https://en.wikipedia.org/wiki/2048_(video_game)), [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)), [Flappy Bird](https://en.wikipedia.org/wiki/Flappy_Bird), [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)), [Pac-Man](https://en.wikipedia.org/wiki/Pac-Man), [Snake](https://en.wikipedia.org/wiki/Snake_(video_game_genre)), and [Tetris](https://en.wikipedia.org/wiki/Tetris).
 
 Any of these games can be played directly using the code available in their respective folders. An encompassing arcade UI was planned at the time of the project, but was ultimately abandoned due to issues with completing the project before the deadline. As it is, the finishing touches on many of the games were put in minutes before the project presentation. If this project is ever revived, this UI will be an important project goal. For more information, see Planned Features.
