@@ -1,7 +1,7 @@
 # Arcade Repo
 This is the EOY project for the APCSDS class we took in 10th grade.
 
-Contributors: [Aditya (baboondude)](https://github.com/baboondude), [Eric (stephsplash30)](https://github.com/stephsplash30), [Ray (rbuckets)](https://github.com/rbuckets), [Utkarsh (utk003)](https://github.com/utk003)
+Contributors: [baboondude (Aditya)](https://github.com/baboondude), [stephsplash30 (Eric)](https://github.com/stephsplash30), [rbuckets (Ray)](https://github.com/rbuckets), [utk003 (Utkarsh)](https://github.com/utk003)
 
 ## What Is This?
 This is a collection of 7 classic arcade games that we implemented in Java: [2048](https://en.wikipedia.org/wiki/2048_(video_game)), [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)), [Flappy Bird](https://en.wikipedia.org/wiki/Flappy_Bird), [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)), [Pac-Man](https://en.wikipedia.org/wiki/Pac-Man), [Snake](https://en.wikipedia.org/wiki/Snake_(video_game_genre)), and [Tetris](https://en.wikipedia.org/wiki/Tetris).
