@@ -1,7 +1,7 @@
 # Arcade Repo
 This is the EOY project for the APCSDS class we took in 10th grade.
 
-Contributors: [baboondude (Aditya S)](https://github.com/baboondude), [stephsplash30 (Eric Z)](https://github.com/stephsplash30), [rbuckets (Ray W)](https://github.com/rbuckets), [utk003 (Utkarsh P)](https://github.com/utk003)
+Contributors: [baboondude (Aditya S)](https://github.com/baboondude), [rbuckets (Ray W)](https://github.com/rbuckets), [stephsplash30 (Eric Z)](https://github.com/stephsplash30), [utk003 (Utkarsh P)](https://github.com/utk003)
 
 ## What Is This?
 This is a collection of 7 classic arcade games that we implemented in Java: [2048](https://en.wikipedia.org/wiki/2048_(video_game)), [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)), [Flappy Bird](https://en.wikipedia.org/wiki/Flappy_Bird), [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)), [Pac-Man](https://en.wikipedia.org/wiki/Pac-Man), [Snake](https://en.wikipedia.org/wiki/Snake_(video_game_genre)), and [Tetris](https://en.wikipedia.org/wiki/Tetris).
@@ -11,7 +11,7 @@ Any of these games can be played directly using the code available in their resp
 ### 2048
 Not much needs to be said for this game. It works exactly like the original.
 
-An interesting factoid about our implementation of this game is that, for a brief moment in its development, the tile movement was so severely messed up that tiles would collide with one another as they moved across the board. Luckily the issue was quickly patched out.
+An interesting factoid about our implementation of this game is that, for a (not-so-)brief moment in its development, the tile movement was so severely messed up that tiles would collide with one another as they moved across the board. Luckily the issue was quickly patched out.
 
 Main Code Contributors: Aditya, Utkarsh
 
