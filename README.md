@@ -1,5 +1,5 @@
 # Arcade Repo
-This is the EOY project for the APCSDS class we took in 10th grade.
+This is the EOY project for the APCS/DS class we took in 10th grade.
 
 Contributors: [baboondude (Aditya S)](https://github.com/baboondude), [rbuckets (Ray W)](https://github.com/rbuckets), [stephsplash30 (Eric Z)](https://github.com/stephsplash30), [utk003 (Utkarsh P)](https://github.com/utk003)
 
