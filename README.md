@@ -89,14 +89,14 @@ An arcade UI would provide a unified interface for starting games, displaying hi
 * Night/Dark Mode
 
 #### Minesweeper
-* *I don't even know.... maybe someone else can fill this in later....*
+* Different board sizes
 
 #### Pac-Man
 * More levels
 * Smoother control of Pac-Man
 
 #### Snake
-* Different sized boards
+* Different board sizes
 
 #### Tetris
 * A more official rule set
