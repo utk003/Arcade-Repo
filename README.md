@@ -63,7 +63,7 @@ Main Code Contributors: Utkarsh
 Main Graphics Contributors: Utkarsh
 
 ### Tetris
-Yet again, this implementation is quite faithful to the original. Slight deviations include the lack of SZ-protection (that is to say, the S and Z tetrads can appear indiscriminately, which is now [considered illegal](https://en.wikipedia.org/wiki/Tetris#Infinite_game_question) for any official Tetris implementation as of 2001).
+Yet again, this implementation is quite faithful to the original. Slight deviations include the lack of SZ-protection (that is to say, the S and Z tetrads can appear indiscriminately, which is [considered illegal](https://en.wikipedia.org/wiki/Tetris#Infinite_game_question) for any official Tetris implementation as of 2001).
 
 Though the final game on our list, Tetris is still impressive. However, this is the only game we did not create explicityly for this project. Instead, this code comes from the Tetris Lab we worked on for this course earlier that year.
 
