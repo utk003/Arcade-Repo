@@ -1,6 +1,8 @@
 # Arcade Repo
 This is the EOY project for the APCS/DS class we took in 10th grade.
 
+![Arcade Loading Screen](https://github.com/utk003/Arcade-Repo/blob/master/assets/arcade/ArcadeDisplay.gif)
+
 Contributors: [utk003 (Utkarsh P)](https://github.com/utk003), [baboondude (Aditya S)](https://github.com/baboondude), [rbuckets (Ray W)](https://github.com/rbuckets), [stephsplash30 (Eric Z)](https://github.com/stephsplash30)
 
 ## What Is This?
