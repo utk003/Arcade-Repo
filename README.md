@@ -90,6 +90,7 @@ An arcade UI would provide a unified interface for starting games, displaying hi
 
 #### Minesweeper
 * Different board sizes
+* Better input detection (eliminating misclicks)
 
 #### Pac-Man
 * More levels
